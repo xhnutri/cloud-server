@@ -55,6 +55,7 @@ RUN apt install dbus-x11
 RUN apt-get install -y imagemagick
 RUN apt-get install -y python3.6 python3-distutils python3-pip python3-apt
 RUN apt-get install kmod
+RUN apt-get -y install python3-uinput
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY requirementsGamepad.txt ./
@@ -73,8 +74,7 @@ CMD python3 gamepad.py & \
     Xvfb :1 -screen 0 1024x768x16 \
     & \
     python3 app.py & \
-    retroarch & \
-    modprobe uinput
+    retroarch 
 # retroarch & \
 
 # CMD [ "uvicorn", "app:app", "--reload" ]
