@@ -73,8 +73,7 @@ CMD python3 gamepad.py & \
     Xvfb :1 -screen 0 1024x768x16 \
     & \
     python3 app.py & \
-    retroarch  & \
-    modprobe uinput
+    retroarch  
 # retroarch & \
 
 # CMD [ "uvicorn", "app:app", "--reload" ]
