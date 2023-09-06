@@ -61,8 +61,12 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY requirementsGamepad.txt ./
 RUN pip3 install --no-cache-dir -r requirementsGamepad.txt
 RUN apt-get -y install sudo
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+RUN adduser --disabled-password --gecos '' docker
+RUN adduser docker sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 USER docker
+
 RUN sudo apt-get update
 RUN sudo apt-get -y install python3-uinput
 COPY . .
