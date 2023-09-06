@@ -57,7 +57,7 @@ async def get_stream(websocket: WebSocket):
                     # subprocess.run([current_directory +"runImage.sh"], stdout=subprocess.PIPE)
                     # # Esperar a que termine el subprocesso
                     # await proceso.wait()
-                    print("Iniciando Subproxeso")
+                    # print("Iniciando Subproxeso")
                     # Crear un subprocesso que ejecute el comando sleep 5
                     # proceso = await asyncio.create_subprocess_exec("sleep", "")
                     proceso = await asyncio.create_subprocess_exec("import", "-window", "root", "yo.jpg")
@@ -66,7 +66,7 @@ async def get_stream(websocket: WebSocket):
                     await proceso.wait()
                     # # Esperar a que termine el subprocesso
                     # await proceso.wait()
-                    print("End Subproceso")
+                    # print("End Subproceso")
                     screenshot = Image.open(current_directory + "yo.jpg")
                     frame = np.array(screenshot)
                     buffer = cv2.imencode('.jpg', frame)[1]
