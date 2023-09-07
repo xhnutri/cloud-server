@@ -1,6 +1,7 @@
 FROM cloud-server-xhnutri:latest
 
 WORKDIR /usr/src/app
+RUN sudo -i
 # Install dependencies
 RUN apt-get update
 RUN apt install dbus-x11
