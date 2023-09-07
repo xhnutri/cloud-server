@@ -10,7 +10,7 @@ RUN apt-get install -y python3.6 python3-distutils python3-pip python3-apt
 COPY requirementsGamepad.txt ./
 RUN pip3 install --no-cache-dir -r requirementsGamepad.txt
 RUN apt-get -y install python3-uinput
-RUN apt-get install -y  linux-modules-extra-5.15.0-1021-gcp
+RUN apt-get install -y linux-modules-5.15.0-1039-gcp
 COPY . .
 # Start server on port 3000∂
 EXPOSE 8080:8080
