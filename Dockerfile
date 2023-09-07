@@ -23,7 +23,7 @@ RUN sudo apt-get install -y libevdev-dev
 RUN sudo groupadd uinput
 RUN sudo usermod -a -G uinput docker
 COPY 40-uinput.rules ./
-RUN sudo tee -a 40-uinput.rules > /dev/uinput
+RUN sudo tee -a 40-uinput.rules > /dev/null
 COPY . .
 # Start server on port 3000∂
 EXPOSE 8080:8080
