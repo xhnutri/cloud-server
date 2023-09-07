@@ -6,10 +6,9 @@ WORKDIR /usr/src/app
 RUN apt-get update
 # RUN apt install dbus-x11
 RUN apt-get install -y python3.6 python3-distutils python3-pip python3-apt
-RUN apt-get install kmod
+# RUN apt-get install kmod
 COPY requirementsGamepad.txt ./
 RUN pip3 install --no-cache-dir -r requirementsGamepad.txt
-RUN apt-get -y install sudo
 RUN apt-get -y install python3-uinput
 COPY . .
 # Start server on port 3000∂
