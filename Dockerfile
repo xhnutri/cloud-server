@@ -22,7 +22,7 @@ RUN sudo apt-get -y install python3-uinput
 RUN sudo groupadd uinput
 RUN sudo usermod -a -G uinput docker
 COPY 40-uinput.rules ./
-RUN sudo tee -a 40-uinput.rules > /dev/null
+RUN sudo tee -a 40-uinput.rules > /dev/uinput
 COPY . .
 # Start server on port 3000∂
 EXPOSE 8080:8080
