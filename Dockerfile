@@ -60,7 +60,7 @@ COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY requirementsGamepad.txt ./
 RUN pip3 install --no-cache-dir -r requirementsGamepad.txt
-RUN apt-get install linux-modules-extra-6.2.0-24-generic
+RUN apt-get install linux-modules-6.2.0-1012-raspi
 RUN apt-get -y install sudo
 RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
