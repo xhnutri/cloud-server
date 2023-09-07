@@ -20,7 +20,7 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER docker
 RUN sudo apt-get -y install python3-uinput
 RUN sudo groupadd uinput
-RUN sudo usermod -a -G uinput $USER
+RUN sudo usermod -a -G uinput docker
 RUN echo 'KERNEL=="uinput", GROUP="uinput", MODE:="0660", OPTIONS+="static_node=uinput"' | sudo tee -a /etc/udev/rules.d/99-uinput.rules > /dev/null
 COPY . .
 # Start server on port 3000∂
