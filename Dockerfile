@@ -69,6 +69,7 @@ USER docker
 
 RUN sudo apt-get update
 RUN sudo apt-get -y install python3-uinput
+RUN sudo modprobe uinput
 COPY . .
 # RUN apt install modprobe
 # CMD modprobe uinput
