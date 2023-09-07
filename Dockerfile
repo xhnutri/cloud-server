@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 RUN apt-get update
 # RUN apt install dbus-x11
 RUN apt-get install -y python3.6 python3-distutils python3-pip python3-apt
-RUN apt-get -y install python3-uinput
+# RUN apt-get -y install python3-uinput
 COPY requirementsGamepad.txt ./
 RUN pip3 install --no-cache-dir -r requirementsGamepad.txt
 RUN apt-get install -y libevdev-dev
