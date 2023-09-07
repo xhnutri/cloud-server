@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 # Install dependencies
 RUN apt-get update
-RUN apt install dbus-x11
+# RUN apt install dbus-x11
 RUN apt-get install -y python3.6 python3-distutils python3-pip python3-apt
 RUN apt-get install kmod
 COPY requirementsGamepad.txt ./
