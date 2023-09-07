@@ -2,13 +2,13 @@ FROM ubuntu:20.04
 
 WORKDIR /usr/src/app
 
+# Install dependencies
+RUN apt-get update
 RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER docker
-# Install dependencies
-RUN sudo apt-get update
 # RUN apt install dbus-x11
 RUN sudo apt-get install -y python3.6 python3-distutils python3-pip python3-apt
 # RUN apt-get install kmod
