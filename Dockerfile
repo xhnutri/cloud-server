@@ -1,4 +1,4 @@
-FROM cloud-server-xhnutri:latest
+FROM i386/ubuntu:bionic
 
 WORKDIR /usr/src/app
 RUN sudo -i
