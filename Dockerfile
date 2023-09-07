@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 
 WORKDIR /usr/src/app
 
+# Install dependencies
+RUN apt-get update
 RUN apt-get -y install sudo
 RUN adduser --disabled-password --gecos '' docker
 RUN adduser docker sudo
