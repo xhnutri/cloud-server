@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cloud-server
+  name: cloud-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-server
+  template:
+    metadata:
+      labels:
+        app: cloud-server
+    spec:
+      volumes:
+      - name: lib-modules
+        hostPath: # using hostpath to get modules from the host
+          path: /lib/modules
+          type: Directory
+      containers:
+        - name: esp-cloud-server
+          image: europe-central2-docker.pkg.dev/project-cloud-gaming-398414/container-artifact-registry/cloud-server:latest
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - SYS_ADMIN
+          volumeMounts:
+          - mountPath: /lib/modules # mounting modules into container
+            name: lib-modules
+            readOnly: true # make sure it's readonly

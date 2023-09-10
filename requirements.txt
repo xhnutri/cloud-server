@@ -1,9 +1,10 @@
 uvicorn==0.23.2
-fastapi==0.103.1
-# PyAutoGUI==0.9.54
-opencv-python==4.8.0.76
-pyscreenshot==3.1
-Pillow==10.0.0
 wsproto
 websockets
 uvicorn[standard]
+fastapi==0.103.1
+opencv-python==4.8.0.76
+pyscreenshot==3.1
+Pillow==10.0.0
+python-uinput==0.11.2
+python-socketio

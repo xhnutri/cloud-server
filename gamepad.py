@@ -62,6 +62,13 @@ def get_input_valueY(joyValue):
     else:
         return int((126 * joyValue * -1) + 126)
 
+controls["gamepad1"] = uinput.Device(
+    events,
+    vendor=0x045E,
+    product=0x028E,
+    version=0x110,
+    name="Microsoft X-Box 360 gamepad1",
+)
 
 @sio.on("RightJoystick")
 async def RightJoystick(sid, data):

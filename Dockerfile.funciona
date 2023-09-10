@@ -90,3 +90,64 @@ CMD /bin/bash & \
 # retroarch & \
 
 # CMD [ "uvicorn", "app:app", "--reload" ]
+
+RUN 
+RUN apt-get install -y build-essential
+RUN apt-get install -y gnupg
+RUN apt-get install -y software-properties-common
+RUN apt-get install -y sudo
+RUN apt-get install -y tzdata
+RUN apt-get install -y # GStreamer dependencies
+RUN apt-get install -y python3-pip
+RUN apt-get install -y python3-dev
+RUN apt-get install -y python3-gi
+RUN apt-get install -y python3-setuptools
+RUN apt-get install -y python3-wheel
+RUN apt-get install -y udev
+RUN apt-get install -y wmctrl
+RUN apt-get install -y jq
+RUN apt-get install -y gdebi-core
+RUN apt-get install -y libgdk-pixbuf2.0-0
+RUN apt-get install -y libgtk2.0-bin
+RUN apt-get install -y libgl-dev
+RUN apt-get install -y libgles-dev
+RUN apt-get install -y libglvnd-dev
+RUN apt-get install -y libgudev-1.0-0
+RUN apt-get install -y xclip
+RUN apt-get install -y x11-utils
+RUN apt-get install -y xdotool
+RUN apt-get install -y x11-xserver-utils
+RUN apt-get install -y xserver-xorg-core
+RUN apt-get install -y wayland-protocols
+RUN apt-get install -y libwayland-dev
+RUN apt-get install -y libwayland-egl1
+RUN apt-get install -y libx11-xcb1
+RUN apt-get install -y libxkbcommon0
+RUN apt-get install -y libxdamage1
+RUN apt-get install -y libsoup2.4-1
+RUN apt-get install -y libsoup-gnome2.4-1
+RUN apt-get install -y libsrtp2-1
+RUN apt-get install -y lame
+RUN apt-get install -y libopus0
+RUN apt-get install -y libwebrtc-audio-processing1
+RUN apt-get install -y pulseaudio
+RUN apt-get install -y libpulse0
+RUN apt-get install -y libcairo-gobject2
+RUN apt-get install -y libpangocairo-1.0-0
+RUN apt-get install -y libgirepository-1.0-1
+RUN apt-get install -y libopenjp2-7
+RUN apt-get install -y libjpeg-dev
+RUN apt-get install -y libwebp-dev
+RUN apt-get install -y libvpx-dev
+RUN apt-get install -y zlib1g-dev
+RUN apt-get install -y x264
+RUN apt-get install -y va-driver-all
+# AMD/Intel graphics driver dependencies
+RUN apt-get install -y i965-va-driver-shaders 
+RUN apt-get install -y intel-media-va-driver-non-free 
+RUN apt-get install -y libmfx-tools 
+RUN apt-get install -y libva2 
+RUN apt-get install -y vainfo 
+RUN apt-get install -y intel-gpu-tools 
+RUN apt-get install -y radeontop 
+RUN rm -rf /var/lib/apt/lists/*

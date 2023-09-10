@@ -1,0 +1,96 @@
+swagger: "2.0"
+info:
+  title: Endpoint Cloud Gaming API
+  description: Endpoint Cloud Gaming API Services
+  version: 1.0.1
+host: cloud-gaming-en.project-cloud-gaming.cloud.goog
+x-google-endpoints:
+  - name: "cloud-gaming-en.project-cloud-gaming.cloud.goog"
+    allowCors: "false"
+security:
+  - api_key: []
+schemes:
+  - https
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: x-api-key
+    in: header
+consumes:
+  - "application/json"
+produces:
+  - application/json
+paths:
+  /:
+    get:
+      produces:
+        - application/json
+      tags:
+        - Tarjetas
+      description: Devuelve los datos de la tarjeta o tarjetas relacionadas a un socio.
+      operationId: DatosTarjeta
+      consumes:
+        - application/json
+      parameters:
+        - in: header
+          name: x-access-token
+          type: string
+          description: Access token.
+          enum: ["{{x-access-token}}"]
+          required: true
+      responses:
+        "200":
+          description: Éxito en la operación.
+          schema:
+            $ref: "#/definitions/defExitoError"
+        "400":
+          description: Ocurrió algun error en la llamada al Servicio.
+          schema:
+            $ref: "#/definitions/defExitoError"
+        "404":
+          description: Ocurrió algun error en la llamada al Servicio.
+          schema:
+            $ref: "#/definitions/defExitoError"
+  /ws:
+    post:
+      tags:
+        - Tarjetas
+      description: |
+        Actualiza el estado de una tarjeta a Bloqueado o Alta.
+      operationId: ActualizarEstadoTarjeta
+      consumes:
+        - application/json
+      parameters:
+        - in: header
+          name: x-access-token
+          type: string
+          description: Access token.
+          enum: ["{{x-access-token}}"]
+          required: true
+      responses:
+        "200":
+          description: Éxito en la operación.
+          schema:
+            $ref: "#/definitions/defExitoError"
+        "400":
+          description: Ocurrió algun error en la llamada al Servicio.
+          schema:
+            $ref: "#/definitions/defExitoError"
+        "404":
+          description: Ocurrió algun error en la llamada al Servicio.
+          schema:
+            $ref: "#/definitions/defExitoError"
+definitions:
+  defExitoError:
+    type: object
+    properties:
+      code:
+        type: integer
+        description: Codigo de error o exito devuelto por el metodo.
+        format: int32
+      message:
+        type: string
+        description: Mensaje de error o exito interno.
+      message-user:
+        type: string
+        description: Mensaje de error o exito al usuario.
