@@ -1,0 +1,14 @@
+kubectl create deployment cloud-server --image=europe-central2-docker.pkg.dev/project-cloud-gaming-398414/container-artifact-registry/cloud-server:latest 
+gcloud container clusters get-credentials cluster-1 --zone=europe-central2
+docker build -t europe-central2-docker.pkg.dev/project-cloud-gaming-398414/container-artifact-registry/cloud-server:latest .
+ 
+gcloud config set project project-cloud-gaming-398414
+gcloud auth configure-docker europe-central2-docker.pkg.dev
+docker push europe-central2-docker.pkg.dev/project-cloud-gaming-398414/container-artifact-registry/cloud-server:latest 
+
+kubectl rollout restart deployment/cloud-server
+kubectl apply -f deployment/deploy
+
+docker run --privileged europe-central2-docker.pkg.dev/project-cloud-gaming-398414/container-artifact-registry/cloud-server:latest 
+
+gcloud endpoints services deploy swagger/beneficiario.yaml
