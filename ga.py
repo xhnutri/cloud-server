@@ -1,16 +1,10 @@
 import uinput
-import socketio
 import uvicorn
 import time
 
 print("Printed immediately.")
 time.sleep(2.4)
 print("Printed after 2.4 seconds.")
-sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins="*")
-# wrap with ASGI application
-app = socketio.ASGIApp(sio)
-sio.always_connect = False
-controls = {}
 events = (
     uinput.BTN_A,
     uinput.BTN_B,
