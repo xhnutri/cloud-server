@@ -1,7 +1,11 @@
 import uinput
 import socketio
 import uvicorn
+import time
 
+print("Printed immediately.")
+time.sleep(2.4)
+print("Printed after 2.4 seconds.")
 sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins="*")
 # wrap with ASGI application
 app = socketio.ASGIApp(sio)
@@ -52,5 +56,9 @@ control1 = uinput.Device(
     name="Microsoft X-Box 360 gamepad1",
 )
 
+print("Printed A.")
 control1.emit(uinput.BTN_A, 1)
+time.sleep(2.4)
 
+print("Printed A End.")
+control1.emit(uinput.BTN_A, 0)
