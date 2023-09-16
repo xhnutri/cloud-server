@@ -62,13 +62,23 @@ def get_input_valueY(joyValue):
     else:
         return int((126 * joyValue * -1) + 126)
 
-controls["gamepad1"] = uinput.Device(
-    events,
-    vendor=0x045E,
-    product=0x028E,
-    version=0x110,
-    name="Microsoft X-Box 360 gamepad1",
-)
+# Create a virtual mouse device
+deviceMouse = uinput.Device([
+    uinput.BTN_LEFT,
+    uinput.BTN_RIGHT,
+    uinput.REL_X,
+    uinput.REL_Y,
+])
+
+@sio.on("mouseMoveClick")
+async def mouseMoveClick(sid, data):
+    print("MouseClick")
+    print(data)
+    # Move the mouse pointer to (100, 100) and click the left button
+    deviceMouse.emit(uinput.REL_X, data['posX'])
+    deviceMouse.emit(uinput.REL_Y, data['posY'])
+    deviceMouse.emit(uinput.BTN_LEFT, 1)
+    deviceMouse.emit(uinput.BTN_LEFT, 0)
 
 @sio.on("RightJoystick")
 async def RightJoystick(sid, data):
