@@ -116,16 +116,16 @@ class ButtonsGamepad:
     def OnBtn(self, data):
         print(data)
         print(self.name)
+        print("inicia")
         if data[self.name]:
             controls[data["gamepad"]].emit(self.btn_type, 1)
         else:
             controls[data["gamepad"]].emit(self.btn_type, 0)
+        print("termina")
 
 
 @sio.on("A")
 async def A(sid, data):
-    print(data)
-    print("A")
     ButtonsGamepad("A", uinput.BTN_A).OnBtn(data)
 
 
