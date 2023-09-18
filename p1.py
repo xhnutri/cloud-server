@@ -1,6 +1,24 @@
 import uinput
 import socketio
 import uvicorn
+import grp
+import os
+import pwd
+
+uinput_fd = uinput.fdopen()
+def drop_privileges(uid_name='nobody', gid_name='nogroup'):
+    # https://stackoverflow.com/questions/2699907/dropping-root-permissions-in-python
+
+    if os.getuid() != 0:
+        return
+
+    running_uid = pwd.getpwnam(uid_name).pw_uid
+    running_gid = grp.getgrnam(gid_name).gr_gid
+
+    os.setgroups([])
+    os.setgid(running_gid)
+    os.setuid(running_uid)
+    old_umask = os.umask(0o77)
 
 sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins="*")
 # wrap with ASGI application
@@ -349,6 +367,7 @@ async def gamepad1(sid, data):
             product=0x028E,
             version=0x110,
             name="Microsoft X-Box 360 gamepad1",
+            fd=uinput_fd,
         )
         print("conect gamepad 1")
 
@@ -391,5 +410,6 @@ async def disconnect(sid):
 
 
 if __name__ == "__main__":
+    drop_privileges() # No need to be root beyond this line.
     print("Init Server")
     uvicorn.run(app, host="0.0.0.0", port=8090)
