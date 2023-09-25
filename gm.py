@@ -2,6 +2,32 @@ import pynput
 import uinput
 import socketio
 import uvicorn
+from pynput.mouse import Button, Controller
+
+mouse = Controller()
+
+# Read pointer position
+print('The current pointer position is {0}'.format(
+    mouse.position))
+
+# Set pointer position
+mouse.position = (10, 20)
+print('Now we have moved it to {0}'.format(
+    mouse.position))
+
+# Move pointer relative to current position
+mouse.move(5, -5)
+
+# Press and release
+mouse.press(Button.left)
+mouse.release(Button.left)
+
+# Double click; this is different from pressing and releasing
+# twice on macOS
+# mouse.click(Button.left, 2)
+
+# Scroll two steps down
+# mouse.scroll(0, 2)
 
 sio = socketio.AsyncServer(async_mode="asgi", cors_allowed_origins="*")
 # wrap with ASGI application
@@ -63,9 +89,9 @@ def get_input_valueY(joyValue):
     else:
         return int((126 * joyValue * -1) + 126)
 
-mouse = pynput.mouse.Controller()
-mouse.position = (0, 0)
-mouse.move(0, 0)
+# mouse = pynput.mouse.Controller()
+# mouse.position = (0, 0)
+# mouse.move(0, 0)
 @sio.on("mouseMoveClick")
 async def mouseMoveClick(sid, data):
     mouse.position = (data['posX'], data['posY'])
@@ -75,9 +101,11 @@ async def mouseMoveClick(sid, data):
     mouse.move(data['posX'], data['posY'])
     # deviceMouse.emit(uinput.REL_X, data['posX'])
     # deviceMouse.emit(uinput.REL_Y, data['posY'])
-    btn = pynput.mouse.Button.left
-    mouse.press(btn)
-    mouse.release(btn)
+    # btn = pynput.mouse.Button.left
+    # mouse.press(btn)
+    # mouse.release(btn)
+    mouse.press(Button.left)
+    mouse.release(Button.left)
     # deviceMouse.emit(uinput.BTN_LEFT, 1)
     # deviceMouse.emit(uinput.BTN_LEFT, 0)
 
