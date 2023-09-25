@@ -339,17 +339,23 @@ def isExits(my_object, name):
     except:
         return True
 
-
+BUS_VIRTUAL = 0x06
 @sio.on("gamepad1")
 async def gamepad1(sid, data):
     if isExits(controls, "gamepad1"):
         controls["gamepad1"] = uinput.Device(
             events,
-            vendor=0x045E,
-            product=0x028E,
-            version=0x110,
             name="Microsoft X-Box 360 gamepad1",
+            BUS_VIRTUAL
         )
+        # controls["gamepad1"] = uinput.Device(
+        #     events,
+        #     vendor=0x045E,
+        #     product=0x028E,
+        #     version=0x110,
+        #     name="Microsoft X-Box 360 gamepad1",
+        #     BUS_VIRTUAL
+        # )
         print("conect gamepad 1")
 
 
@@ -359,11 +365,16 @@ async def gamepad1(sid, data):
     controls["gamepad1"].destroy()
     controls["gamepad1"] = uinput.Device(
         events,
-        vendor=0x045E,
-        product=0x028E,
-        version=0x110,
         name="Microsoft X-Box 360 gamepad1",
+        BUS_VIRTUAL
     )
+    # controls["gamepad1"] = uinput.Device(
+    #     events,
+    #     vendor=0x045E,
+    #     product=0x028E,
+    #     version=0x110,
+    #     name="Microsoft X-Box 360 gamepad1",
+    # )
 
 
 # @sio.on("gamepad2")
