@@ -100,10 +100,10 @@ async def mouseMoveClick(sid, data):
         mouse.position = (data['posX'], data['posY'])
         print("press")
         mouse.move(data['posX'], data['posY'])
-        mouse.press(Button.left)
-    else:
-        print("Release")
-        mouse.release(Button.left)
+        mouse.click(Button.left)
+    # else:
+    #     print("Release")
+    #     mouse.release(Button.left)
     # Move the mouse pointer to (100, 100) and click the left button
     
     # deviceMouse.emit(uinput.BTN_LEFT, 1)
