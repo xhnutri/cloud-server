@@ -94,10 +94,10 @@ def get_input_valueY(joyValue):
 # mouse.move(0, 0)
 @sio.on("mouseMoveClick")
 async def mouseMoveClick(sid, data):
-    mouse.position = (data['posX'], data['posY'])
     print("MouseClick")
     print(data)
     if data['press']:
+        mouse.position = (data['posX'], data['posY'])
         print("press")
         mouse.move(data['posX'], data['posY'])
         mouse.press(Button.left)
