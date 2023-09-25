@@ -11,16 +11,9 @@ print('The current pointer position is {0}'.format(
     mouse.position))
 
 # Set pointer position
-mouse.position = (10, 20)
+mouse.position = (0, 0)
 print('Now we have moved it to {0}'.format(
     mouse.position))
-
-# Move pointer relative to current position
-mouse.move(5, -5)
-
-# Press and release
-mouse.press(Button.left)
-mouse.release(Button.left)
 
 # Double click; this is different from pressing and releasing
 # twice on macOS
@@ -92,6 +85,7 @@ def get_input_valueY(joyValue):
 # mouse = pynput.mouse.Controller()
 # mouse.position = (0, 0)
 # mouse.move(0, 0)
+# mouse.position = (0, 0)
 @sio.on("mouseMoveClick")
 async def mouseMoveClick(sid, data):
     print("MouseClick")
