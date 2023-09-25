@@ -68,6 +68,7 @@ mouse.position = (0, 0)
 mouse.move(0, 0)
 @sio.on("mouseMoveClick")
 async def mouseMoveClick(sid, data):
+    mouse.position = data
     print("MouseClick")
     print(data)
     # Move the mouse pointer to (100, 100) and click the left button
