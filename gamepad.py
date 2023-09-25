@@ -346,8 +346,7 @@ async def gamepad1(sid, data):
         controls["gamepad1"] = uinput.Device(
             events,
             name="Microsoft X-Box 360 gamepad1",
-            BUS_VIRTUAL
-        )
+            BUS_VIRTUAL)
         # controls["gamepad1"] = uinput.Device(
         #     events,
         #     vendor=0x045E,
@@ -366,8 +365,7 @@ async def gamepad1(sid, data):
     controls["gamepad1"] = uinput.Device(
         events,
         name="Microsoft X-Box 360 gamepad1",
-        BUS_VIRTUAL
-    )
+        BUS_VIRTUAL)
     # controls["gamepad1"] = uinput.Device(
     #     events,
     #     vendor=0x045E,
