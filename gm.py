@@ -91,7 +91,6 @@ async def mouseMoveClick(sid, data):
     print("MouseClick")
     print(data)
     if data['press']:
-        mouse.position = (data['posX'], data['posY'])
         print("press")
         mouse.move(data['posX'], data['posY'])
         mouse.click(Button.left)
