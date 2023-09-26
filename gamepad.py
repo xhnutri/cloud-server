@@ -347,7 +347,7 @@ version=0x110,
 @sio.on("gamepad1")
 async def gamepad1(sid, data):
     if isExits(controls, "gamepad1"):
-        controls["gamepad1"] = uinput.Device(events, name,, vendor, product, version, BUS_VIRTUAL)
+        controls["gamepad1"] = uinput.Device(events, name, vendor, product, version, BUS_VIRTUAL)
         # controls["gamepad1"] = uinput.Device(
         #     events,
         #     vendor=0x045E,
