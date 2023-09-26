@@ -6,7 +6,7 @@ from pynput.mouse import Button, Controller
 from pynput.keyboard import Key
 # from pynput  
 
-keyboard = pynput.kerboard.Controller();
+keyboard = pynput.keyboard.Controller();
 
 # Press and release space
 keyboard.press(Key.space)
