@@ -3,6 +3,13 @@ import uinput
 import socketio
 import uvicorn
 from pynput.mouse import Button, Controller
+from pynput import Keyboard 
+
+keyboard = Kerboard.controller();
+
+# Press and release space
+keyboard.press(Key.space)
+keyboard.release(Key.space)
 
 mouse = Controller()
 
