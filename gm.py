@@ -3,6 +3,7 @@ import uinput
 import socketio
 import uvicorn
 from pynput.mouse import Button, Controller
+from pynput.keyboard import Key
 # from pynput  
 
 keyboard = pynput.kerboard.controller();
