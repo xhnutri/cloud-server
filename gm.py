@@ -3,9 +3,9 @@ import uinput
 import socketio
 import uvicorn
 from pynput.mouse import Button, Controller
-from pynput import Keyboard 
+# from pynput  
 
-keyboard = Kerboard.controller();
+keyboard = pynput.kerboard.controller();
 
 # Press and release space
 keyboard.press(Key.space)
