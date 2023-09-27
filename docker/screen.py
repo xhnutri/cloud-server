@@ -83,9 +83,9 @@ async def get_stream(websocket: WebSocket):
                 xwd_output = subprocess.check_output(["xwd", "-root", "-silent"])
                 
                 # Convert the output to a PNG image using convert
-                convert_output = subprocess.check_output(["convert", "xwd:-", "screenshot.png"], input=xwd_output)
+                convert_output = subprocess.check_output(["convert", "xwd:-", "screenshot.jpg"], input=xwd_output)
               
-                screenshot = Image.open(current_directory + "screenshot.png")
+                screenshot = Image.open(current_directory + "screenshot.jpg")
                 frame = np.array(screenshot)
                 buffer = cv2.imencode('.jpg', frame)[1]
                 image_bytes = buffer.tobytes()
