@@ -78,6 +78,7 @@ async def get_stream(websocket: WebSocket):
                     print(e)
                     Exception("Error sending")
             # await new()
+            print("init newapp")
             async def newapp():
                 # Capture the screen using xwd
                 xwd_output = subprocess.check_output(["xwd", "-root", "-silent"])
@@ -100,9 +101,14 @@ async def get_stream(websocket: WebSocket):
                 
                 # Get the bytes of the image
                 image_bytes = image.tobytes()
-                await websocket.send_bytes(image_bytes)
+                try:
+                    await websocket.send_bytes(image_bytes)
+                except Exception as e:
+                    print(e)
+                    Exception("Error sending")
             await newapp()
 
+            print("init newapp")
             async def funciona():
                 screenshot = Image.open(current_directory + "yo.jpg")
 
