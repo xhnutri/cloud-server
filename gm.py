@@ -100,7 +100,7 @@ async def mouseMoveClick(sid, data):
     print(data)
     if data['press']:
         print("press")
-        mouse.position(data['posX'], data['posY'])
+        mouse.position = (data['posX'], data['posY'])
         mouse.press(pynput.mouse.Button.left)
         mouse.release(pynput.mouse.Button.left)
     # else:
@@ -117,7 +117,7 @@ async def mouseMoveClick(sid, data):
     print(data)
     if data['press']:
         print("press")
-        mouse.position(data['posX'], data['posY'])
+        mouse.position = (data['posX'], data['posY'])
         mouse.press(pynput.mouse.Button.right)
         mouse.release(pynput.mouse.Button.right)
         
