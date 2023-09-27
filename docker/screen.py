@@ -1,5 +1,5 @@
 import subprocess
-
+import io
 # # Load the image into Python using PIL
 # from PIL import Image
 # image = Image.open("screenshot.png")
