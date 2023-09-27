@@ -96,7 +96,7 @@ async def get_stream(websocket: WebSocket):
                 # buffer = cv2.imencode('.jpg', frame)[1]
                 # image_bytes = buffer.tobytes()
                 # Open the PNG image
-                image = Image.open("image.png")
+                image = Image.open(current_directory + "screenshot.png")
                 
                 # Get the bytes of the image
                 image_bytes = image.tobytes()
