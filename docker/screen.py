@@ -107,8 +107,8 @@ async def get_stream(websocket: WebSocket):
                     print(e)
                     Exception("Error sending")
             await newapp()
-
-            print("init newapp")
+            
+            print("termina newapp")
             async def funciona():
                 screenshot = Image.open(current_directory + "yo.jpg")
 
