@@ -102,6 +102,8 @@ async def get_stream(websocket: WebSocket):
                 # Get the bytes of the image
                 image_bytes = image.tobytes()
                 try:
+                    proceso = await asyncio.create_subprocess_exec("sleep", "0.3")
+                    await proceso.wait()
                     await websocket.send_bytes(image_bytes)
                 except Exception as e:
                     print(e)
