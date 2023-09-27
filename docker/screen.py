@@ -79,22 +79,27 @@ async def get_stream(websocket: WebSocket):
                     Exception("Error sending")
             # await new()
             async def newapp():
-                # # Capture the screen using xwd
-                # xwd_output = subprocess.check_output(["xwd", "-root", "-silent"])
-                
-                # # Convert the output to a PNG image using convert
-                # convert_output = subprocess.check_output(["convert", "xwd:-", "screenshot.jpg"], input=xwd_output)
-                
-                # Captura la pantalla utilizando xwd
+                # Capture the screen using xwd
                 xwd_output = subprocess.check_output(["xwd", "-root", "-silent"])
                 
-                # Convierte la salida a una imagen PIL
-                image = Image.open(io.BytesIO(xwd_output))
-                image.save(current_directory + "screenshot.jpg", "JPEG")
-                screenshot = Image.open(current_directory + "screenshot.jpg")
-                frame = np.array(screenshot)
-                buffer = cv2.imencode('.jpg', frame)[1]
-                image_bytes = buffer.tobytes()
+                # Convert the output to a PNG image using convert
+                convert_output = subprocess.check_output(["convert", "xwd:-", "screenshot.png"], input=xwd_output)
+                
+                # Captura la pantalla utilizando xwd
+                # xwd_output = subprocess.check_output(["xwd", "-root", "-silent"])
+                
+                # # Convierte la salida a una imagen PIL
+                # image = Image.open(io.BytesIO(xwd_output))
+                # image.save(current_directory + "screenshot.jpg", "JPEG")
+                # screenshot = Image.open(current_directory + "screenshot.jpg")
+                # frame = np.array(screenshot)
+                # buffer = cv2.imencode('.jpg', frame)[1]
+                # image_bytes = buffer.tobytes()
+                # Open the PNG image
+                image = Image.open("image.png")
+                
+                # Get the bytes of the image
+                image_bytes = image.tobytes()
                 await websocket.send_bytes(image_bytes)
             await newapp()
 
