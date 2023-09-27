@@ -2,7 +2,7 @@ import pynput
 import uinput
 import socketio
 import uvicorn
-from pynput.mouse import Button, Controller
+# from pynput.mouse import Button, Controller
 from pynput.keyboard import Key
 # from pynput  
 
@@ -12,7 +12,7 @@ keyboard = pynput.keyboard.Controller();
 keyboard.press(Key.space)
 keyboard.release(Key.space)
 
-mouse = Controller()
+mouse = pynput.mouse.Controller()
 
 # Read pointer position
 print('The current pointer position is {0}'.format(
@@ -100,8 +100,9 @@ async def mouseMoveClick(sid, data):
     print(data)
     if data['press']:
         print("press")
-        mouse.move(data['posX'], data['posY'])
-        mouse.click(Button.left)
+        mouse.position(data['posX'], data['posY'])
+        mouse.press(pynput.mouse.Button.left)
+        mouse.release(pynput.mouse.Button.left)
     # else:
     #     print("Release")
     #     mouse.release(Button.left)
@@ -112,12 +113,14 @@ async def mouseMoveClick(sid, data):
 
 @sio.on("mouseMoveClickright")
 async def mouseMoveClick(sid, data):
-    print("MouseClick")
+    print("MouseClickRight")
     print(data)
     if data['press']:
         print("press")
-        mouse.move(data['posX'], data['posY'])
-        mouse.click(Button.right)
+        mouse.position(data['posX'], data['posY'])
+        mouse.press(pynput.mouse.Button.right)
+        mouse.release(pynput.mouse.Button.right)
+        
 @sio.on("RightJoystick")
 async def RightJoystick(sid, data):
     print("RightJoystick")
