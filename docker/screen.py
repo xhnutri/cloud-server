@@ -85,7 +85,11 @@ async def get_stream(websocket: WebSocket):
                 
                 # Convert the output to a PNG image using convert
                 convert_output = subprocess.check_output(["convert", "xwd:-", "screenshot.png"], input=xwd_output)
+                # Open the PNG image
+                image = Image.open("screenshot.png")
                 
+                # Convert the image to JPEG format
+                image = image.convert("RGB")
                 # Captura la pantalla utilizando xwd
                 # xwd_output = subprocess.check_output(["xwd", "-root", "-silent"])
                 
@@ -93,14 +97,14 @@ async def get_stream(websocket: WebSocket):
                 # image = Image.open(io.BytesIO(xwd_output))
                 # image.save(current_directory + "screenshot.jpg", "JPEG")
                 # screenshot = Image.open(current_directory + "screenshot.jpg")
-                # frame = np.array(screenshot)
-                # buffer = cv2.imencode('.jpg', frame)[1]
-                # image_bytes = buffer.tobytes()
+                frame = np.array(image)
+                buffer = cv2.imencode('.jpg', frame)[1]
+                image_bytes = buffer.tobytes()
                 # Open the PNG image
-                image = Image.open(current_directory + "screenshot.png")
+                # image = Image.open(current_directory + "screenshot.png")
                 
                 # Get the bytes of the image
-                image_bytes = image.tobytes()
+                # image_bytes = image.tobytes()
                 try:
                     proceso = await asyncio.create_subprocess_exec("sleep", "0.3")
                     await proceso.wait()
