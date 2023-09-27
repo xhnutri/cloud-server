@@ -14,6 +14,7 @@ import cv2  # para procesar la imagen y guardarla como mp4
 import numpy as np  # para trabajar con matrices
 import pyscreenshot as ImageGrab
 import asyncio
+import sys
 
 print("Version 1.0")
 app = FastAPI()
@@ -57,7 +58,7 @@ async def get_stream(websocket: WebSocket):
                     # proceso = await asyncio.create_subprocess_exec("sleep", "")
                     proceso = await asyncio.create_subprocess_exec("import", "-window", "root", "yo.jpg")
                     await proceso.wait()
-                    proceso = await asyncio.create_subprocess_exec("sleep", "0.3")
+                    proceso = await asyncio.create_subprocess_exec("sleep", sys.argv[0])
                     await proceso.wait()
                     # # Esperar a que termine el subprocesso
                     # await proceso.wait()
