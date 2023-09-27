@@ -110,6 +110,14 @@ async def mouseMoveClick(sid, data):
     # deviceMouse.emit(uinput.BTN_LEFT, 1)
     # deviceMouse.emit(uinput.BTN_LEFT, 0)
 
+@sio.on("mouseMoveClickright")
+async def mouseMoveClick(sid, data):
+    print("MouseClick")
+    print(data)
+    if data['press']:
+        print("press")
+        mouse.move(data['posX'], data['posY'])
+        mouse.click(Button.right)
 @sio.on("RightJoystick")
 async def RightJoystick(sid, data):
     print("RightJoystick")
