@@ -3,25 +3,25 @@ import uinput
 import socketio
 import uvicorn
 # from pynput.mouse import Button, Controller
-from pynput.keyboard import Key
+# from pynput.keyboard import Key
 # from pynput  
 
-keyboard = pynput.keyboard.Controller();
+# keyboard = pynput.keyboard.Controller();
 
-# Press and release space
-keyboard.press(Key.space)
-keyboard.release(Key.space)
+# # Press and release space
+# keyboard.press(Key.space)
+# keyboard.release(Key.space)
 
-mouse = pynput.mouse.Controller()
+# mouse = pynput.mouse.Controller()
 
 # Read pointer position
-print('The current pointer position is {0}'.format(
-    mouse.position))
+# print('The current pointer position is {0}'.format(
+#     mouse.position))
 
-# Set pointer position
-mouse.position = (0, 0)
-print('Now we have moved it to {0}'.format(
-    mouse.position))
+# # Set pointer position
+# mouse.position = (0, 0)
+# print('Now we have moved it to {0}'.format(
+#     mouse.position))
 
 # Double click; this is different from pressing and releasing
 # twice on macOS
@@ -93,16 +93,16 @@ def get_input_valueY(joyValue):
 # mouse = pynput.mouse.Controller()
 # mouse.position = (0, 0)
 # mouse.move(0, 0)
-# mouse.position = (0, 0)
-@sio.on("mouseMoveClick")
-async def mouseMoveClick(sid, data):
-    print("MouseClick")
-    print(data)
-    if data['press']:
-        print("press")
-        mouse.position = (data['posX'], data['posY'])
-        mouse.press(pynput.mouse.Button.left)
-        mouse.release(pynput.mouse.Button.left)
+# # mouse.position = (0, 0)
+# @sio.on("mouseMoveClick")
+# async def mouseMoveClick(sid, data):
+#     print("MouseClick")
+#     print(data)
+#     if data['press']:
+#         print("press")
+#         mouse.position = (data['posX'], data['posY'])
+#         mouse.press(pynput.mouse.Button.left)
+#         mouse.release(pynput.mouse.Button.left)
     # else:
     #     print("Release")
     #     mouse.release(Button.left)
