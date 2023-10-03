@@ -111,6 +111,8 @@ def get_input_valueY(joyValue):
     # deviceMouse.emit(uinput.BTN_LEFT, 1)
     # deviceMouse.emit(uinput.BTN_LEFT, 0)
 
+BUS_VIRTUAL = 0x06
+name = "Microsoft X-Box 360 gamepad1"
 controls["gamepad1"] = uinput.Device(events, name, BUS_VIRTUAL)
 @sio.on("mouseMoveClickright")
 async def mouseMoveClick(sid, data):
@@ -381,8 +383,6 @@ def isExits(my_object, name):
     except:
         return True
 
-BUS_VIRTUAL = 0x06
-name = "Microsoft X-Box 360 gamepad1"
 @sio.on("gamepad1")
 async def gamepad1(sid, data):
     if isExits(controls, "gamepad1"):
