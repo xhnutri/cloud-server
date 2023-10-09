@@ -6,4 +6,7 @@ https://xhnutri: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@github.com/xhnutri/clou
 
 https://xhnutri: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@github.com/xhnutri/cloud-server.git
 
+https://xhnutri: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@github.com/xhnutri/cloud-server.git
+
+
 https://platzi.com/comunidad/como-habilitar-cors-en-una-peticion-a-una-api-con-js/
